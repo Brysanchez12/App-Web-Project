@@ -1,0 +1,81 @@
+<!-- JS -->
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jsGrid -->
+<script src="/plugins/jsgrid/jsgrid.min.js"></script>
+<!-- jQuery validate -->
+<script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- Select2 -->
+<script src="/plugins/select2/js/select2.full.min.js"></script>
+<!-- Sweetalert -->
+<script src="/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/js/adminlte.js"></script>
+<!-- Main -->
+<script src="/js/main.js"></script>
+<script>
+
+  // loadSection ahora es async para esperar al fetch:
+  async function loadSection(containerId, filePath) {
+    console.log('asss');
+    const el = document.getElementById(containerId);
+    if (!el)
+      return;
+
+    try {
+      const response = await fetch(filePath);       // <-- espera aquí
+      if (!response.ok) {
+        throw new Error('Error cargando ' + filePath);
+      }
+      const html = await response.text();            // <-- y aquí
+      el.innerHTML = html;
+    } catch (err) {
+      console.error(err);
+      el.innerHTML = '<p style="color:red;">Error cargando sección.</p>';
+    }
+  }
+
+
+//        async function initializePage() {
+//            console.log('verifica token');
+//            const isAuthenticated = checkAuth();
+//            if (!isAuthenticated) {
+//                return;
+//            }
+//
+//            await loadSection('header', 'pages/header.html');
+//            await loadSection('sidebar', 'pages/leftmenu.html');
+//            await loadSection('footer', 'pages/footer.html');
+//
+//            // TambiÃ©n puedes cargar el contenido inicial
+//            await loadSection('content', 'pages/dashboard.html');
+//        }
+//
+//        initializePage();
+</script>

@@ -1,0 +1,345 @@
+body {
+  font-family: 'Roboto Condensed' !important;
+  font-weight: 400 !important;
+}
+
+/* Título del modal */
+.ui-dialog-titlebar {
+  background-color: #fbd690;
+  color: #333;
+  font-weight: bold;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+/* Estilizar el botón de cerrar del diálogo */
+.ui-dialog-titlebar-close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #dc3545;
+  /* rojo estilo Bootstrap */
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: background 0.3s, color 0.3s;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+/* Al pasar el mouse, efecto hover */
+.ui-dialog-titlebar-close:hover {
+  background: #dc3545;
+  color: white;
+  cursor: pointer;
+}
+
+/* Cambiar el ícono de cerrar (opcional si usas texto "x") */
+.ui-dialog-titlebar-close .ui-button-icon {
+  display: none;
+  /* ocultar ícono jQuery UI por defecto */
+}
+
+.ui-dialog-titlebar-close::before {
+  content: "✕";
+  /* símbolo de cerrar */
+  font-size: 20px;
+  line-height: 1;
+}
+
+
+.ui-dialog-buttonpane {
+  background-color: #fbd690;
+}
+
+/* Cuerpo del modal */
+.ui-dialog-content {
+
+  color: #333;
+  /* Texto oscuro para contraste */
+  padding: 20px;
+}
+
+/*.ui-widget-header {
+  border-radius: inherit;
+}*/
+
+/* Estilo general para el modal (borde redondeado) */
+.ui-dialog {
+  /*border-radius: 10px;*/
+  padding: 0px;
+}
+
+.jsgrid-grid-header {
+  overflow-x: hidden !important;
+  /* Oculta scroll horizontal */
+  overflow-y: hidden !important;
+  /* Oculta scroll vertical */
+}
+
+.jsgrid-header-row>th {
+  white-space: nowrap;
+  /* Evita que se rompan las palabras */
+}
+
+.jsgrid-header-row>.jsgrid-header-cell {
+  background-color: lavender;
+  /*#f4d9b7;*/
+}
+
+.select2-container--default .select2-selection--single {
+  height: calc(2.25rem + 2px);
+  /* Igual a input.form-control */
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 1.5;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: calc(2.25rem + 2px);
+}
+
+
+
+/*
+*/
+/* PosiciÃ³n de los cuadros */
+.fila-cuadros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Estilo de cada cuadro */
+.cuadro {
+  width: 220px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+  text-align: center;
+}
+
+.cliente {
+  background-color: #4e73df;
+}
+
+.tecnico {
+  background-color: #1cc88a;
+}
+
+.celular {
+  background-color: #36b9cc;
+}
+
+.items {
+  background-color: #f6c23e;
+}
+
+/* Iconos 
+i {
+  font-size: 30px;
+  margin-bottom: 10px;
+  display: block;
+}*/
+
+.cuadro label {
+  display: block;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.contador {
+  font-size: 28px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* EstadÃ­sticas */
+.bloque-estadisticas.cuadro-estadisticas {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bloque-estadisticas h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.contenido-estadisticas {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* CÃ­rculo SVG */
+.Container-circulo {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.progreso-ring {
+  transform: rotate(-90deg);
+}
+
+.progreso-ring-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 12;
+}
+
+.progreso-ring-fill {
+  fill: none;
+  stroke: #4e73df;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 339.292;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* Texto centrado dentro del cÃ­rculo */
+.progreso-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+
+#reparaciones-numero {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Info adicional del pastel */
+.bloque-info {
+  max-width: 300px;
+  text-align: center;
+}
+
+/*
+h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+p {
+  color: #777;
+  font-size: 14px;
+}
+
+/*
+*/
+
+#modal-acciones {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Más oscuro */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#modal-acciones>div {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 700px;
+  /* Más grande que antes */
+  width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+#modal-acciones h3 {
+  margin-top: 0;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  background: #eee;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.tab.active {
+  background: #fff;
+  border-bottom: 3px solid #007bff;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+#modal-acciones select,
+#modal-acciones textarea,
+#modal-acciones input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+#modal-acciones textarea {
+  min-height: 100px;
+}
+
+#modal-acciones .btn {
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#modal-acciones .btn-success {
+  margin-right: 10px;
+}

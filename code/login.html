@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="smartfix"/>
+    <meta name="rights" content="Guayaquil - Ecuador"/>
+    <meta name="description" content="Proyecto UGCS - SmartFix"/>
+    <meta name="generator" content="Grupo D"/>
+    <meta name="author" content="Grupo D"/>
+    <title>SmartFix - Login</title>
+    <link rel="stylesheet" href="/css/login.css" />
+    <!-- Sweetalert -->
+    <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css">
+    <link rel="shortcut icon" href="/img/users.png" />
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Sweetalert -->
+    <script src="/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col-sm-12" style="height: 150px;">
+        <h2 style="align-content: center;text-align: center;font-size: 38pt;">SmartFix</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login-container">
+          <div class="col-sm-6">
+            <div class="Felix">
+              <img src="img/pngegg.png" width="350" height="525">
+            </div>
+          </div>
+          <section class="form-login">
+            <h5>Inicia Sesión con tu Cuenta</h5>
+            <form id="loginForm" onsubmit="return login(event)">
+              <input class="controls" type="text" id="uid" name="uid" placeholder="Id de Usuario" required>
+              <div class="password-container">
+                <input class="controls" type="password" id="pwd" name="pwd" placeholder="Contraseña" required>
+                <img src="/img/ojo-abierto.png" id="TogglePassword" alt="Mostrar contraseña" width="20" height="20">
+              </div>
+              <div id="loginError" style="color:red; margin-bottom:1em;"></div>
+              <input class="buttons" type="submit" value="Ingresar">
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Funcion login
+      async function login(event) {
+        event.preventDefault();
+        const uid = document.getElementById('uid').value;
+        const pwd = document.getElementById('pwd').value;
+        const errorDiv = document.getElementById('loginError');
+        errorDiv.textContent = '';
+
+        try {
+          const resp = await fetch('login.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({uid, pwd})
+          });
+
+          if (!resp.ok)
+            // No hubo respuesta
+            throw new Error('Error en petición: ' + resp.status);
+          const resdata = await resp.json();
+          
+          if (resdata.err) {            
+            console.log(resdata.err);
+            errorDiv.textContent = resdata.err.msg || 'Credenciales inválidas';
+          } else { 
+            console.log('si '  + resdata.data);
+            if (resdata.data && resdata.data.token) {
+            // Guardar token y expiracion            
+            localStorage.setItem('auth_token', resdata.data.token);
+            localStorage.setItem('auth_expira', resdata.data.expira);
+
+            // Mostrar exito
+            await Swal.fire({
+              icon: 'success',
+              title: 'Ingreso Exitoso!',
+              text: 'Bienvenido',
+              timer: 1500,
+              showConfirmButton: false
+            });
+
+            // Redirigir a pantalla principal
+            window.location.href = 'index.php';
+            }
+        }
+        } catch (err) {
+          console.error(err);
+          errorDiv.textContent = 'Error de conexión, inténtalo más tarde.';
+        }
+
+        return false;
+      }
+
+      // Toggle visibilidad de contraseña
+      document.getElementById('TogglePassword').addEventListener('click', () => {
+        const pwd = document.getElementById('pwd');
+        pwd.type = pwd.type === 'password' ? 'text' : 'password';
+      });
+    </script>
+  </body>
+</html>
